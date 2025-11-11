@@ -1,16 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { Provider } from 'react-redux';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { store } from './logic/redux/store';
+import { useAppDispatch } from './logic/redux/hooks';
+import { fetchCurrentUser } from './logic/redux/userSlice';
+import Router from './pages/Router';
 import './App.css';
+
+// Create a client for React Query
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+    },
+  },
+});
+
+// Component to fetch current user on mount
+const AppContent: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    // Fetch current user on app load
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
+  return <Router />;
+};
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-blue-400">
-      <h1 className="text-5xl font-bold text-blue-200">Tailwind 4 fonctionne 🎉</h1>
-      <p className="mt-4 text-gray-700 text-lg">Bienvenue sur Ironman Tracker</p>
-      <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-        Tester un bouton
-      </button>
-    </div>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <AppContent />
+      </QueryClientProvider>
+    </Provider>
   );
 }
 

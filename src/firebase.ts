@@ -23,6 +23,12 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
+// Log Firebase initialization
+console.log('Firebase initialized successfully');
+console.log('Project ID:', firebaseConfig.projectId);
+console.log('Auth instance:', auth);
+console.log('Firestore instance:', db);
+
 // Initialize Analytics only in production and when supported
 let analytics;
 if (process.env.NODE_ENV === 'production' && typeof window !== 'undefined') {
