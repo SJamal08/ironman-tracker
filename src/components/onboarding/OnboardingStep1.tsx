@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { OnboardingData, Gender, ExperienceLevel, MainSport } from '../../logic/model/User';
+import { OnboardingData } from '../../logic/model/User';
 
 interface OnboardingStep1Props {
     data: Partial<OnboardingData>;

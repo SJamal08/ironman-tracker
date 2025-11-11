@@ -23,7 +23,6 @@ const OnboardingStep2: React.FC<OnboardingStep2Props> = ({ data, onNext, onPrevi
         register,
         handleSubmit,
         control,
-        watch,
         formState: { errors },
     } = useForm<Partial<OnboardingData>>({
         defaultValues: {

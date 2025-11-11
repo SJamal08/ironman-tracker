@@ -15,7 +15,6 @@ const OnboardingStep4: React.FC<OnboardingStep4Props> = ({ data, onSubmit, onPre
         handleSubmit,
         control,
         setValue,
-        formState: { errors },
     } = useForm<Partial<OnboardingData>>({
         defaultValues: {
             ...data,

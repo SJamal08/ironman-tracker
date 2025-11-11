@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, useWatch } from 'react-hook-form';
-import { OnboardingData, GoalType } from '../../logic/model/User';
+import { OnboardingData } from '../../logic/model/User';
 
 interface OnboardingStep3Props {
     data: Partial<OnboardingData>;

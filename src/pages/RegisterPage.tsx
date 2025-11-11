@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import { RegisterPayload } from '../logic/model/User';
@@ -15,7 +15,6 @@ const RegisterPage: React.FC = () => {
         register,
         handleSubmit,
         formState: { errors },
-        watch,
     } = useForm<RegisterPayload>();
 
     const onSubmit = async (data: RegisterPayload) => {
